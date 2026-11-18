@@ -74,12 +74,12 @@ def combine_csv_files(file_data_list):
 
 
 def main():
-    st.set_page_config(page_title="CSV File Merger", layout="centered")
-    st.title("CSV File Merger")
+    st.set_page_config(page_title="CSV Merger", layout="centered")
+    st.title("CSV Merger")
     st.markdown("Combine multiple CSV files while preserving the header from the first file.")
 
     uploaded_files = st.file_uploader(
-        "Upload CSV files to combine",
+        "Upload CSV files",
         type="csv",
         accept_multiple_files=True,
         help="Select 2 or more CSV files. The first file's header will be retained."
@@ -95,13 +95,13 @@ def main():
             with col1:
                 output_filename = st.text_input(
                     "Output filename",
-                    value="combined.csv",
+                    value="Output.csv",
                     help="Enter the desired output filename"
                 )
             with col2:
                 st.write("")
                 st.write("")
-                combine_button = st.button("Combine Files", type="primary")
+                combine_button = st.button("Merge CSVs", type="primary")
 
             if combine_button:
                 try:
@@ -118,16 +118,16 @@ def main():
                         final_filename = output_filename
 
                     # Provide download button
-                    st.success("✅ Files combined successfully!")
+                    st.success("✅ Files merged successfully!")
                     st.download_button(
-                        label="Download Combined CSV",
+                        label="Download output CSV",
                         data=combined_data,
                         file_name=final_filename,
                         mime="text/csv",
                     )
 
                 except (OSError, ValueError) as error:
-                    st.error(f"❌ Error combining files: {error}")
+                    st.error(f"❌ Error: {error}")
 
 
 if __name__ == "__main__":
