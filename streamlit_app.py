@@ -1,7 +1,5 @@
 import io
 import streamlit as st
-from pathlib import Path
-
 
 def find_end_of_first_csv_record(file_handle):
     """
